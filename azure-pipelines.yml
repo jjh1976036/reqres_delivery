@@ -1,7 +1,22 @@
 # Docker
+- task: Docker@2
+  inputs:
+    containerRegistry: 'acr'
+- task: Docker@2
+  inputs:
+    containerRegistry: 'acr'
+    repository: 'delivery'
+    command: 'buildAndPush'
+    Dockerfile: '**/Dockerfile'
+    command: 'buildAndPush'
+    Dockerfile: '**/Dockerfile'
 # Build a Docker image
 # https://docs.microsoft.com/azure/devops/pipelines/languages/docker
-
+- task: CopyFiles@2
+  inputs:
+    SourceFolder: '$(system.defaultworkingdirectory)'
+    Contents: 'azure/*'
+    TargetFolder: '$(build.artifactstagingdirectory)'
 trigger:
 - master
 
