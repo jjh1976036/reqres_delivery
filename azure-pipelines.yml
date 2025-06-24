@@ -19,6 +19,11 @@
     TargetFolder: '$(build.artifactstagingdirectory)'
 trigger:
 - master
+- task: PublishBuildArtifacts@1
+  inputs:
+    PathtoPublish: '$(Build.ArtifactStagingDirectory)'
+    ArtifactName: 'drop'
+    publishLocation: 'Container'
 
 resources:
 - repo: self
